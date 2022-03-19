@@ -207,5 +207,5 @@ Shader "OCBNET/PrettyGrass"
 
         ENDCG
     }
-    FallBack "Transparent/Cutout/Bumped Specular"
+    FallBack "Transparent/Cutout/VertexLit"
 }
