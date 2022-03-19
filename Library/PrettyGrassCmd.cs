@@ -78,6 +78,38 @@ public class PrettyGrassCmd : ConsoleCmdAbstract
             switch (_params[0])
             {
 
+                case "Al":
+                case "AlbedoFactor":
+                    OcbPrettyGrass.AlbedoFactor = float.Parse(_params[1]);
+                    MeshDescription.meshes[MeshDescription.MESH_GRASS].material
+                        .SetFloat("_AlbedoFactor", OcbPrettyGrass.AlbedoFactor);
+                    break;
+                case "Sp":
+                case "SpecularFactor":
+                    OcbPrettyGrass.SpecularFactor = float.Parse(_params[1]);
+                    MeshDescription.meshes[MeshDescription.MESH_GRASS].material
+                        .SetFloat("_SpecularFactor", OcbPrettyGrass.SpecularFactor);
+                    break;
+                case "Sm":
+                case "SmoothnessFactor":
+                    OcbPrettyGrass.SmoothnessFactor = float.Parse(_params[1]);
+                    MeshDescription.meshes[MeshDescription.MESH_GRASS].material
+                        .SetFloat("_SmoothnessFactor", OcbPrettyGrass.SmoothnessFactor);
+                    break;
+                case "Oc":
+                case "OcclusionFactor":
+                    OcbPrettyGrass.OcclusionFactor = float.Parse(_params[1]);
+                    MeshDescription.meshes[MeshDescription.MESH_GRASS].material
+                        .SetFloat("_OcclusionFactor", OcbPrettyGrass.OcclusionFactor);
+                    break;
+                case "Tr":
+                case "TranslucencyFactor":
+                    OcbPrettyGrass.TranslucencyFactor = float.Parse(_params[1]);
+                    MeshDescription.meshes[MeshDescription.MESH_GRASS].material
+                        .SetFloat("_TranslucencyFactor", OcbPrettyGrass.TranslucencyFactor);
+                    break;
+
+                    
                 case "get_float_uniform":
                     Log.Out("Uniform " + _params[1] + " => " + MeshDescription.meshes
                         [MeshDescription.MESH_GRASS].material.GetFloat(_params[1]));

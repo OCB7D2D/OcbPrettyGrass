@@ -9,7 +9,13 @@ Shader "OCBNET/PrettyGrass"
         _TransScattering("Scaterring Falloff", Range(1, 50)) = 1
         _TransDirect("Direct", Range(0, 1)) = 1
         _TransAmbient("Ambient", Range(0, 1)) = 1
-        _TransShadow("Shadow", Range(0, 1)) = 0.9
+        _TransShadow("Shadow", Range(0, 1)) = 1.0
+        _AlbedoFactor("AlbedoFactor", Range(0, 1)) = 0.4
+        _SpecularFactor("SpecularFactor", Range(0, 1)) = 1.0
+        _SmoothnessFactor("SmoothnessFactor", Range(0, 1)) = 0.8
+        _OcclusionFactor("OcclusionFactor", Range(0, 1)) = 0.6
+        _TranslucencyFactor("TranslucencyFactor", Range(0, 1)) = 0.4
+        _TransDirect("Direct", Range(0, 1)) = 1
         _Albedo("Albedo", 2D) = "white" { }
         _Normal("Normal", 2D) = "white" { }
         _Gloss_AO_SSS("Gloss_AO_SSS", 2D) = "white" { }
@@ -47,6 +53,12 @@ Shader "OCBNET/PrettyGrass"
         uniform float4 _Albedo_ST;
         uniform float4 _Gloss_AO_SSS_ST;
 
+        uniform half _AlbedoFactor = 0.4;
+        uniform half _SpecularFactor = 1.0;
+        uniform half _SmoothnessFactor = 0.8;
+        uniform half _OcclusionFactor = 0.6;
+        uniform half _TranslucencyFactor = 0.4;
+
         uniform half _Translucency = 50;
         uniform half _TransNormalDistortion = 0;
         uniform half _TransScattering = 1;
@@ -55,29 +67,14 @@ Shader "OCBNET/PrettyGrass"
         uniform half _TransShadow = 0.9;
         uniform float _Cutoff = 0.1;
 
-        // Shouldn't cost much to keep
-        uniform float _F1 = 0.0;
-        uniform float _F2 = 0.0;
-        uniform float _F3 = 0.0;
-        uniform float _F4 = 0.0;
-        uniform float _F5 = 0.0;
-        uniform float _F6 = 0.0;
-        uniform float _F7 = 0.0;
-        uniform float _F8 = 0.0;
-        uniform float _F9 = 0.0;
-
         struct Input
         {
-            //float4 _LightColor;
             float2 uv_texcoord;
             float3 worldPos;
-            float2 color : COLOR;
-            float2 other : TEXCOORD;
         };
 
         struct SurfaceOutputStandardSpecularCustom
         {
-            float2 other;
             fixed3 Albedo;
             fixed3 Specular;
             fixed3 Normal;
@@ -86,8 +83,6 @@ Shader "OCBNET/PrettyGrass"
             fixed Occlusion;
             fixed Alpha;
             fixed3 Translucency;
-            fixed Distance;
-            // fixed4 Color;
         };
 
         // Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
@@ -146,8 +141,6 @@ Shader "OCBNET/PrettyGrass"
             xlati12 = int(uint(xlati12) & uint(xlati1.x));
             xlati12 = int(uint(xlati1.y) & uint(xlati12));
             xlati12 = int(uint(xlati1.z) & uint(xlati12));
-            //v.color.x = distance(v.vertex, _WorldSpaceCameraPos);
-            v.color.y = distance(v.vertex, _WorldSpaceCameraPos);
             v.vertex.xyz = (int(xlati12) != 0) ? xlat0.xyz : v.vertex.xyz;
         }
 
@@ -165,16 +158,12 @@ Shader "OCBNET/PrettyGrass"
 
             float4 gaos = tex2D(_Gloss_AO_SSS, i.uv_texcoord * _Gloss_AO_SSS_ST.xy + _Gloss_AO_SSS_ST.zw);
 
-            o.Albedo = albedo.xyz; // min(max(albedo, gaos.xxx), 1);
-            o.Specular = gaos.xxx * _F1 + gaos.yyy * _F2 + gaos.zzz * _F3 + gaos.www * _F4 - i.other.x * _F5/* correct 0.4 */; //  _Smoothness;
-            o.Smoothness = gaos.xxx /* noty */ * 0.8 /* it's 0.8! */; //  _Smoothness;
-            o.Translucency = albedo * gaos.zzz; // * i.color
-            // o.Emission = min(gaos.xxx, 0.8);
+            o.Albedo = albedo.xyz * _AlbedoFactor;
+            o.Specular = gaos.r * _SpecularFactor;
+            o.Occlusion = gaos.g * _OcclusionFactor;
+            o.Smoothness = gaos.b * _SmoothnessFactor;
+            o.Translucency = min(pow(gaos.b, _TranslucencyFactor) / 10, 1);
             o.Alpha = 1.0;
-
-            o.other.x = distance(i.worldPos, _WorldSpaceCameraPos) * 0.25;
-            //o.outOthers.y = COLOR0.x;
-
         }
 
         inline half4 LightingStandardSpecularCustom(inout SurfaceOutputStandardSpecularCustom s, half3 viewDir, UnityGI gi)

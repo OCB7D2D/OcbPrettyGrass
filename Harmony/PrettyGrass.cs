@@ -8,6 +8,12 @@ public class OcbPrettyGrass : IModApi
 
     public static Shader Shader = null;
 
+    public static float AlbedoFactor = 0.4f;
+    public static float SpecularFactor = 1.0f;
+    public static float SmoothnessFactor = 0.8f;
+    public static float OcclusionFactor = 0.6f;
+    public static float TranslucencyFactor = 0.4f;
+
     public static bool HasCrookedDeco(Mod mod)
     {
         foreach (string path in Directory.GetDirectories(mod.Path + "/.."))
@@ -41,6 +47,16 @@ public class OcbPrettyGrass : IModApi
             if (mesh.name == "grass") mesh.shadowCastingMode = quality > 2
                     ? UnityEngine.Rendering.ShadowCastingMode.On
                     : UnityEngine.Rendering.ShadowCastingMode.Off;
+        MeshDescription.meshes[MeshDescription.MESH_GRASS].material
+            .SetFloat("AlbedoFactor", AlbedoFactor);
+        MeshDescription.meshes[MeshDescription.MESH_GRASS].material
+            .SetFloat("SpecularFactor", SpecularFactor);
+        MeshDescription.meshes[MeshDescription.MESH_GRASS].material
+            .SetFloat("SmoothnessFactor", SmoothnessFactor);
+        MeshDescription.meshes[MeshDescription.MESH_GRASS].material
+            .SetFloat("OcclusionFactor", OcclusionFactor);
+        MeshDescription.meshes[MeshDescription.MESH_GRASS].material
+            .SetFloat("TranslucencyFactor", TranslucencyFactor);
     }
 
     [HarmonyPatch(typeof(MeshDescription))]
