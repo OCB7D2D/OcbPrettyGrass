@@ -8,10 +8,10 @@ public class OcbPrettyGrass : IModApi
 
     public static Shader Shader = null;
 
-    public static float AlbedoFactor = 0.4f;
+    public static float AlbedoFactor = 0.6f;
     public static float SpecularFactor = 1.0f;
     public static float SmoothnessFactor = 0.8f;
-    public static float OcclusionFactor = 0.6f;
+    public static float OcclusionFactor = 0.8f;
     public static float TranslucencyFactor = 0.4f;
 
     public static bool HasCrookedDeco(Mod mod)

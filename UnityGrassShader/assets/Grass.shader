@@ -10,10 +10,10 @@ Shader "OCBNET/PrettyGrass"
         _TransDirect("Direct", Range(0, 1)) = 1
         _TransAmbient("Ambient", Range(0, 1)) = 1
         _TransShadow("Shadow", Range(0, 1)) = 1.0
-        _AlbedoFactor("AlbedoFactor", Range(0, 1)) = 0.4
+        _AlbedoFactor("AlbedoFactor", Range(0, 1)) = 0.6
         _SpecularFactor("SpecularFactor", Range(0, 1)) = 1.0
         _SmoothnessFactor("SmoothnessFactor", Range(0, 1)) = 0.8
-        _OcclusionFactor("OcclusionFactor", Range(0, 1)) = 0.6
+        _OcclusionFactor("OcclusionFactor", Range(0, 1)) = 0.8
         _TranslucencyFactor("TranslucencyFactor", Range(0, 1)) = 0.4
         _TransDirect("Direct", Range(0, 1)) = 1
         _Albedo("Albedo", 2D) = "white" { }
@@ -53,10 +53,10 @@ Shader "OCBNET/PrettyGrass"
         uniform float4 _Albedo_ST;
         uniform float4 _Gloss_AO_SSS_ST;
 
-        uniform half _AlbedoFactor = 0.4;
+        uniform half _AlbedoFactor = 0.6;
         uniform half _SpecularFactor = 1.0;
         uniform half _SmoothnessFactor = 0.8;
-        uniform half _OcclusionFactor = 0.6;
+        uniform half _OcclusionFactor = 0.8;
         uniform half _TranslucencyFactor = 0.4;
 
         uniform half _Translucency = 50;
