@@ -19,7 +19,7 @@ public class OcbPrettyGrass : IModApi
         foreach (string path in Directory.GetDirectories(mod.Path + "/.."))
         {
             if (path.ContainsCaseInsensitive("CrookedDeco") &&
-                File.Exists(mod.Path + "/../ModInfo.xml"))
+                File.Exists(path + "/ModInfo.xml"))
                     return true;
         }
         return false;
@@ -28,7 +28,7 @@ public class OcbPrettyGrass : IModApi
     public void InitMod(Mod mod)
     {
         Debug.Log("Loading OCB Better Grass Patch: " + GetType().ToString());
-        if (HasCrookedDeco(mod)) Log.Out("  Detected OcbCrookedDeco, skipped patching");
+        if (HasCrookedDeco(mod)) Log.Out("  Detected OcbCrookedDeco (skip patching) ...");
         else new Harmony(GetType().ToString()).PatchAll(mod.MainAssembly);
         AssetBundle bundle = AssetBundle.LoadFromFile(mod.Path + "/Resources/GrassShader.unity3d");
         Shader = bundle.LoadAsset<Shader>("assets/grass.shader");
