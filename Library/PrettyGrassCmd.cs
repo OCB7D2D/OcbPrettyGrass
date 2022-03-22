@@ -169,46 +169,47 @@ public class PrettyGrassCmd : ConsoleCmdAbstract
                     MeshDescription.meshes[MeshDescription.MESH_GRASS].material
                         .SetFloat("_Cutoff", float.Parse(_params[1]));
                     break;
-                default:
-                    Log.Warning("Unknown command " + _params[0]);
-                    break;
 
                 // Some hidden features for debugging the shader
-                case "f1":
-                    MeshDescription.meshes[MeshDescription.MESH_GRASS].material
-                        .SetFloat("_F1", float.Parse(_params[1]));
-                    break;
-                case "f2":
-                    MeshDescription.meshes[MeshDescription.MESH_GRASS].material
-                        .SetFloat("_F2", float.Parse(_params[1]));
-                    break;
-                case "f3":
-                    MeshDescription.meshes[MeshDescription.MESH_GRASS].material
-                        .SetFloat("_F3", float.Parse(_params[1]));
-                    break;
-                case "f4":
-                    MeshDescription.meshes[MeshDescription.MESH_GRASS].material
-                        .SetFloat("_F4", float.Parse(_params[1]));
-                    break;
-                case "f5":
-                    MeshDescription.meshes[MeshDescription.MESH_GRASS].material
-                        .SetFloat("_F5", float.Parse(_params[1]));
-                    break;
-                case "f6":
-                    MeshDescription.meshes[MeshDescription.MESH_GRASS].material
-                        .SetFloat("_F6", float.Parse(_params[1]));
-                    break;
-                case "f7":
-                    MeshDescription.meshes[MeshDescription.MESH_GRASS].material
-                        .SetFloat("_F7", float.Parse(_params[1]));
-                    break;
-                case "f8":
-                    MeshDescription.meshes[MeshDescription.MESH_GRASS].material
-                        .SetFloat("_F8", float.Parse(_params[1]));
-                    break;
-                case "f9":
-                    MeshDescription.meshes[MeshDescription.MESH_GRASS].material
-                        .SetFloat("_F9", float.Parse(_params[1]));
+                // case "f1":
+                //     MeshDescription.meshes[MeshDescription.MESH_GRASS].material
+                //         .SetFloat("_F1", float.Parse(_params[1]));
+                //     break;
+                // case "f2":
+                //     MeshDescription.meshes[MeshDescription.MESH_GRASS].material
+                //         .SetFloat("_F2", float.Parse(_params[1]));
+                //     break;
+                // case "f3":
+                //     MeshDescription.meshes[MeshDescription.MESH_GRASS].material
+                //         .SetFloat("_F3", float.Parse(_params[1]));
+                //     break;
+                // case "f4":
+                //     MeshDescription.meshes[MeshDescription.MESH_GRASS].material
+                //         .SetFloat("_F4", float.Parse(_params[1]));
+                //     break;
+                // case "f5":
+                //     MeshDescription.meshes[MeshDescription.MESH_GRASS].material
+                //         .SetFloat("_F5", float.Parse(_params[1]));
+                //     break;
+                // case "f6":
+                //     MeshDescription.meshes[MeshDescription.MESH_GRASS].material
+                //         .SetFloat("_F6", float.Parse(_params[1]));
+                //     break;
+                // case "f7":
+                //     MeshDescription.meshes[MeshDescription.MESH_GRASS].material
+                //         .SetFloat("_F7", float.Parse(_params[1]));
+                //     break;
+                // case "f8":
+                //     MeshDescription.meshes[MeshDescription.MESH_GRASS].material
+                //         .SetFloat("_F8", float.Parse(_params[1]));
+                //     break;
+                // case "f9":
+                //     MeshDescription.meshes[MeshDescription.MESH_GRASS].material
+                //         .SetFloat("_F9", float.Parse(_params[1]));
+                //     break;
+
+                default:
+                    Log.Warning("Unknown command " + _params[0]);
                     break;
 
             }

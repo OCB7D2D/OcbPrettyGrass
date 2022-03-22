@@ -13,7 +13,7 @@ Shader "OCBNET/PrettyGrass"
         _AlbedoFactor("AlbedoFactor", Range(0, 1)) = 0.6
         _SpecularFactor("SpecularFactor", Range(0, 1)) = 1.0
         _SmoothnessFactor("SmoothnessFactor", Range(0, 1)) = 0.8
-        _OcclusionFactor("OcclusionFactor", Range(0, 1)) = 0.8
+        _OcclusionFactor("OcclusionFactor", Range(0, 1)) = 0.6
         _TranslucencyFactor("TranslucencyFactor", Range(0, 1)) = 0.4
         _TransDirect("Direct", Range(0, 1)) = 1
         _Albedo("Albedo", 2D) = "white" { }
@@ -56,7 +56,7 @@ Shader "OCBNET/PrettyGrass"
         uniform half _AlbedoFactor = 0.6;
         uniform half _SpecularFactor = 1.0;
         uniform half _SmoothnessFactor = 0.8;
-        uniform half _OcclusionFactor = 0.8;
+        uniform half _OcclusionFactor = 0.6;
         uniform half _TranslucencyFactor = 0.4;
 
         uniform half _Translucency = 50;
@@ -158,11 +158,13 @@ Shader "OCBNET/PrettyGrass"
 
             float4 gaos = tex2D(_Gloss_AO_SSS, i.uv_texcoord * _Gloss_AO_SSS_ST.xy + _Gloss_AO_SSS_ST.zw);
 
+            // Here most of the magic happens
             o.Albedo = albedo.xyz * _AlbedoFactor;
             o.Specular = gaos.r * _SpecularFactor;
             o.Occlusion = gaos.g * _OcclusionFactor;
             o.Smoothness = gaos.b * _SmoothnessFactor;
             o.Translucency = min(pow(gaos.b, _TranslucencyFactor) / 10, 1);
+
             o.Alpha = 1.0;
         }
 
@@ -173,6 +175,9 @@ Shader "OCBNET/PrettyGrass"
             #else
             float3 lightAtten = lerp(_LightColor0.rgb, gi.light.color, _TransShadow);
             #endif
+            
+            // Calculate translucency by inverting the light prope vector
+            // Basically checking the lighting at the other side of the plane
             half3 lightDir = gi.light.dir + s.Normal * _TransNormalDistortion;
             half transVdotL = pow(saturate(dot(viewDir, -lightDir)), _TransScattering);
             half3 translucency = lightAtten * (transVdotL * _TransDirect + gi.indirect.diffuse * _TransAmbient) * s.Translucency;
