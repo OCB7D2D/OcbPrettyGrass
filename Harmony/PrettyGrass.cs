@@ -37,6 +37,11 @@ public class OcbPrettyGrass : IModApi
 
     static public void ApplyGamePrefs()
     {
+        if (GameStats.GetInt(EnumGameStats.GameState) == 0)
+        {
+            return;
+        }
+
         MeshDescription.meshes[MeshDescription.MESH_GRASS].material.shader = Shader;
         int quality = GamePrefs.GetInt(EnumGamePrefs.OptionsGfxTerrainQuality);
         MeshDescription.meshes[MeshDescription.MESH_GRASS].bReceiveShadows = quality > 0;
