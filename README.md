@@ -23,6 +23,10 @@ should work together without a problem.
 
 ## Changelog
 
+### Version 0.1.2
+
+- Automated deployment and release packaging
+
 ### Version 0.1.1
 
 - Fix index out of bound error (@s7092910)
