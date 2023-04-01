@@ -23,6 +23,10 @@ should work together without a problem.
 
 ## Changelog
 
+### Version 0.1.3
+
+- Fix issue when added to dedicated server
+
 ### Version 0.1.2
 
 - Automated deployment and release packaging

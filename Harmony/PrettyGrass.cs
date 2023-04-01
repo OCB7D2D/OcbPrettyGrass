@@ -27,6 +27,7 @@ public class OcbPrettyGrass : IModApi
 
     public void InitMod(Mod mod)
     {
+        if (GameManager.IsDedicatedServer) return;
         Debug.Log("Loading OCB Better Grass Patch: " + GetType().ToString());
         if (HasCrookedDeco(mod)) Log.Out("  Detected OcbCrookedDeco (skip patching) ...");
         else new Harmony(GetType().ToString()).PatchAll(mod.MainAssembly);
