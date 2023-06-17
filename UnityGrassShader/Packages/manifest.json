@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "ch.ocbnet.unityassetexporter": "https://github.com/OCB7D2D/UnityAssetExporter.git#upm@master",
+    "com.unity.ugui": "1.0.0",
+    "com.unity.modules.assetbundle": "1.0.0"
+  }
+}

@@ -1,3 +1,12 @@
-/build
-/.vs
-*.pdb
+*.sln
+*.csproj
+.vsconfig
+Temp/
+UserSettings/
+ProjectSettings/
+Packages/
+PackageCache/
+obj/
+Logs/
+Library/
+.*/

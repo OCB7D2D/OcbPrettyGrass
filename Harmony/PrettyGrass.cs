@@ -2,6 +2,7 @@
 using System.IO;
 using HarmonyLib;
 using UnityEngine;
+using System.Reflection;
 
 public class OcbPrettyGrass : IModApi
 {
@@ -28,9 +29,9 @@ public class OcbPrettyGrass : IModApi
     public void InitMod(Mod mod)
     {
         if (GameManager.IsDedicatedServer) return;
-        Debug.Log("Loading OCB Better Grass Patch: " + GetType().ToString());
-        if (HasCrookedDeco(mod)) Log.Out("  Detected OcbCrookedDeco (skip patching) ...");
-        else new Harmony(GetType().ToString()).PatchAll(mod.MainAssembly);
+        Log.Out("OCB Harmony Patch: " + GetType().ToString());
+        Harmony harmony = new Harmony(GetType().ToString());
+        harmony.PatchAll(Assembly.GetExecutingAssembly());
         AssetBundle bundle = AssetBundle.LoadFromFile(mod.Path + "/Resources/GrassShader.unity3d");
         Shader = bundle.LoadAsset<Shader>("assets/grass.shader");
         ModEvents.GameStartDone.RegisterHandler(ApplyGamePrefs);
