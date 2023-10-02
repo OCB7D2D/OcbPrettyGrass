@@ -94,5 +94,11 @@
     <Compile Include="Library\PrettyGrassCmd.cs" />
     <Compile Include="Library\StaticRandom.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="ModInfo.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
