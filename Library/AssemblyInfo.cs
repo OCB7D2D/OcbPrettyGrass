@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following
@@ -10,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("Release")]
 [assembly: AssemblyCompany("OCBNET")]
 [assembly: AssemblyProduct("OcbPrettyGrass")]
-[assembly: AssemblyCopyright("Copyright © Marcel Greter 2022")]
+[assembly: AssemblyCopyright("Copyright © Marcel Greter 2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

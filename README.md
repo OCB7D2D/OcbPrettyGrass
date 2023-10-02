@@ -23,6 +23,11 @@ should work together without a problem.
 
 ## Changelog
 
+### Version 0.2.1
+
+- Fix issue/compatibility with OcbCrookedDeco
+- No longer randomizing Grass and Plants twice
+
 ### Version 0.2.0
 
 - Update compatibility for 7D2D A21.0(b313)

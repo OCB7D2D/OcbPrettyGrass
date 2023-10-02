@@ -1,8 +1,8 @@
-﻿using OCB;
+﻿using HarmonyLib;
+using OCB;
 using System.IO;
-using HarmonyLib;
-using UnityEngine;
 using System.Reflection;
+using UnityEngine;
 
 public class OcbPrettyGrass : IModApi
 {
@@ -87,6 +87,9 @@ public class OcbPrettyGrass : IModApi
         static readonly ulong Seed04 = StaticRandom.RandomSeed();
         static readonly ulong Seed05 = StaticRandom.RandomSeed();
 
+        static bool Prepare(MethodBase original) =>
+            ModManager.GetMod("OcbCrookedDeco") == null;
+
         static void Prefix(Vector3 _drawPos,
             ref BlockShapeBillboardPlant.RenderData _data)
         {
@@ -117,6 +120,9 @@ public class OcbPrettyGrass : IModApi
         static readonly ulong Seed03 = StaticRandom.RandomSeed();
         static readonly ulong Seed04 = StaticRandom.RandomSeed();
         static readonly ulong Seed05 = StaticRandom.RandomSeed();
+
+        static bool Prepare(MethodBase original) =>
+            ModManager.GetMod("OcbCrookedDeco") == null;
 
         static void Prefix(Vector3 _drawPos,
             ref BlockShapeBillboardPlant.RenderData _data)
