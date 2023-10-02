@@ -32,7 +32,10 @@ public class OcbPrettyGrass : IModApi
         Log.Out("OCB Harmony Patch: " + GetType().ToString());
         Harmony harmony = new Harmony(GetType().ToString());
         harmony.PatchAll(Assembly.GetExecutingAssembly());
-        AssetBundle bundle = AssetBundle.LoadFromFile(mod.Path + "/Resources/GrassShader.unity3d");
+        var ShaderBundle = mod.Path + "/Resources/GrassShader.unity3d";
+        if (SystemInfo.graphicsDeviceType == UnityEngine.Rendering.GraphicsDeviceType.Metal)
+            ShaderBundle = Path.Combine(mod.Path, "Resources/GrassShader.metal.unity3d");
+        AssetBundle bundle = AssetBundle.LoadFromFile(ShaderBundle);
         Shader = bundle.LoadAsset<Shader>("assets/grass.shader");
         ModEvents.GameStartDone.RegisterHandler(ApplyGamePrefs);
     }
