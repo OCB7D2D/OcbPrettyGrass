@@ -87,6 +87,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Harmony\PrettyShrub.cs" />
     <Compile Include="Harmony\PrettyGrass.cs" />
   </ItemGroup>
   <ItemGroup>

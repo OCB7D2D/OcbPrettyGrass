@@ -28,6 +28,7 @@ should work together without a problem.
 - Fix issue/compatibility with OcbCrookedDeco
 - No longer randomizing Grass and Plants twice
 - Add Metal shader variant for MacOSX
+- Disable plant-shrub billboard LOD
 
 ### Version 0.2.0
 

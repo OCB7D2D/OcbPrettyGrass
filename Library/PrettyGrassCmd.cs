@@ -62,6 +62,30 @@ public class PrettyGrassCmd : ConsoleCmdAbstract
         {
             switch (_params[0])
             {
+                case "shrub":
+                    foreach (var rndr in UnityEngine.Object.FindObjectsOfType<Renderer>())
+                    {
+                        foreach (var mat in rndr.materials)
+                        {
+                            if (mat.name.Contains("Shrub") && mat.name.Contains("Billboard"))
+                            {
+                                for (int i = 0; i < mat.shader.GetPropertyCount(); i++)
+                                {
+                                    if (_params[1].ToLower().Contains("color"))
+                                    {
+                                        var col = StringParsers.ParseColor(_params[2]);
+                                        mat.SetColor("_TintColor", col);
+                                    }
+                                    else
+                                    {
+                                        mat.SetFloat(_params[1], float.Parse(_params[2]));
+                                    }
+
+                                }
+                            }
+                        }
+                    }
+                    break;
                 case "set_float_uniform":
                     MeshDescription.meshes[MeshDescription.MESH_GRASS].material
                         .SetFloat(_params[1], float.Parse(_params[2]));
@@ -215,4 +239,31 @@ public class PrettyGrassCmd : ConsoleCmdAbstract
             }
         }
     }
+
+    /*
+    private void CountShrubBillboards()
+    {
+        int meshes = 0; int billboards = 0;
+        foreach (var group in UnityEngine.Object.FindObjectsOfType<LODGroup>(false))
+        {
+            if (group.name.StartsWith("plantShrub"))
+            {
+                LOD[] lods = group.GetLODs();
+                for (int l = 0; l < lods.Length; l++)
+                {
+                    LOD lod = lods[l];
+                    for (int n = 0; n < lod.renderers.Length; n++)
+                    {
+                        Renderer qwe = lod.renderers[n];
+                        if (!qwe.isVisible) continue;
+                        if (l == 3) billboards++;
+                        else meshes++;
+                    }
+                }
+            }
+
+        }
+        Log.Out("Has {0} meshes, {1} billboards", meshes, billboards);
+    }
+    */
 }
