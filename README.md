@@ -23,6 +23,12 @@ should work together without a problem.
 
 ## Changelog
 
+### Version 0.2.2
+
+- Backport improvements from OcbCrookedDeco mod:
+- Fix issue with short grass being to "pointy"
+- Avoid re-randomization when ground is damaged
+
 ### Version 0.2.1
 
 - Fix issue/compatibility with OcbCrookedDeco

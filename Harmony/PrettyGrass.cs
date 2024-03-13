@@ -79,6 +79,7 @@ public class OcbPrettyGrass : IModApi
         }
     }
 
+    // BlockShapeGrass/BlockShapeBillboardPlant
     [HarmonyPatch(typeof(BlockShapeBillboardPlant))]
     [HarmonyPatch("RenderSpinMesh")]
     public class BlockShapeBillboardPlant_RenderSpinMesh
@@ -97,9 +98,9 @@ public class OcbPrettyGrass : IModApi
             ref BlockShapeBillboardPlant.RenderData _data)
         {
             ulong seed = Seed01;
-            StaticRandom.HashSeed(ref seed, _drawPos.x);
-            StaticRandom.HashSeed(ref seed, _drawPos.y);
-            StaticRandom.HashSeed(ref seed, _drawPos.z);
+            StaticRandom.HashSeed(ref seed, Mathf.Floor(_drawPos.x));
+            StaticRandom.HashSeed(ref seed, Mathf.Floor(_drawPos.y));
+            StaticRandom.HashSeed(ref seed, Mathf.Floor(_drawPos.z));
             _data.count += StaticRandom.RangeSquare(0,
                 MeshDescription.GrassQualityPlanes, seed);
             StaticRandom.HashSeed(ref seed, Seed02);
@@ -109,10 +110,11 @@ public class OcbPrettyGrass : IModApi
             StaticRandom.HashSeed(ref seed, Seed04);
             _data.height *= StaticRandom.RangeSquare(0.9f, 1.3f, seed);
             StaticRandom.HashSeed(ref seed, Seed05);
-            _data.sideShift += StaticRandom.RangeSquare(-.2f, .2f, seed);
+            _data.sideShift *= StaticRandom.RangeSquare(0.8f, 1.2f, seed);
         }
     }
 
+    // BlockShapeGrassShort
     [HarmonyPatch(typeof(BlockShapeBillboardPlant))]
     [HarmonyPatch("RenderGridMesh")]
     public class BlockShapeBillboardPlant_RenderGridMesh
@@ -131,9 +133,9 @@ public class OcbPrettyGrass : IModApi
             ref BlockShapeBillboardPlant.RenderData _data)
         {
             ulong seed = Seed01;
-            StaticRandom.HashSeed(ref seed, _drawPos.z);
-            StaticRandom.HashSeed(ref seed, _drawPos.y);
-            StaticRandom.HashSeed(ref seed, _drawPos.x);
+            StaticRandom.HashSeed(ref seed, Mathf.Floor(_drawPos.z));
+            StaticRandom.HashSeed(ref seed, Mathf.Floor(_drawPos.y));
+            StaticRandom.HashSeed(ref seed, Mathf.Floor(_drawPos.x));
             _data.count += StaticRandom.RangeSquare(0,
                 MeshDescription.GrassQualityPlanes, seed);
             StaticRandom.HashSeed(ref seed, Seed02);
@@ -143,7 +145,8 @@ public class OcbPrettyGrass : IModApi
             StaticRandom.HashSeed(ref seed, Seed04);
             _data.height *= StaticRandom.RangeSquare(0.9f, 1.3f, seed);
             StaticRandom.HashSeed(ref seed, Seed05);
-            _data.sideShift += StaticRandom.RangeSquare(-.2f, .2f, seed);
+            // Input for `sideShift` varies from 0.18 to 0.3
+            _data.sideShift *= StaticRandom.RangeSquare(.8f, 1.2f, seed);
         }
     }
 
