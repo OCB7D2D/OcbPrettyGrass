@@ -1,4 +1,4 @@
-# OCB Grass Shader Mod - 7 Days to Die Addon (A21)
+# OCB Grass Shader Mod - 7 Days to Die Addon (V1.0 exp)
 
 Replaces original Grass Shader (Game/SwayingGrass Surface) with
 a new one that supports real-time shading (e.g. point lights).
@@ -16,12 +16,27 @@ drop is barely noticeable (57 to 55 on GTX 1070 ti @ 2K).
 
 ![Grass with new shader](Screens/in-game-day-new-shader.jpg)
 
-It also includes a small part from my [OcbCrookedDeco][2] mod.
+It also includes a small part from my [OcbCrookedDeco][1] mod.
 The grass will get more random, with varying heights, rotation
 and also how many "blades" are rendered. Of course both mods
 should work together without a problem.
 
+[![GitHub CI Compile Status][3]][2]
+
+## Download and Install
+
+End-Users are encouraged to download my mods from [NexusMods][4].  
+Every download there helps me to buy stuff for mod development.
+
+Otherwise please use one of the [official releases][5] here.  
+Only clone or download the repo if you know what you do!
+
 ## Changelog
+
+### Version 0.3.0
+
+- First compatibility with V1.0 (exp)
+- Bumped unity version to 2022.3.29f1
 
 ### Version 0.2.2
 
@@ -56,9 +71,8 @@ should work together without a problem.
 
 - Initial version
 
-## Compatibility
-
-Developed initially for version a20.3(b3), updated through A21.0(b313).
-
-[1]: https://github.com/OCB7D2D/A20BepInExPreloader
-[2]: https://github.com/OCB7D2D/OcbCrookedDeco
+[1]: https://github.com/OCB7D2D/OcbCrookedDeco
+[2]: https://github.com/OCB7D2D/OcbPrettyGrass/actions/workflows/ci.yml
+[3]: https://github.com/OCB7D2D/OcbPrettyGrass/actions/workflows/ci.yml/badge.svg
+[4]: https://www.nexusmods.com/7daystodie/mods/2097
+[5]: https://github.com/OCB7D2D/OcbPrettyGrass/releases

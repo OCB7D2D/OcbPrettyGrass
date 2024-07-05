@@ -6,14 +6,14 @@ public class PrettyGrassCmd : ConsoleCmdAbstract
 
     private static string info = "PrettyGrass";
 
-    protected override string[] getCommands()
+    public override string[] getCommands()
     {
         return new string[2] { info, "pg" };
     }
 
-    protected override string getDescription() => "Pretty Grass Render Settings";
+    public override string getDescription() => "Pretty Grass Render Settings";
 
-    protected override string getHelp() => "Fine tune how grass and bushes are rendered\n";
+    public override string getHelp() => "Fine tune how grass and bushes are rendered\n";
 
     public override void Execute(List<string> _params, CommandSenderInfo _senderInfo)
     {
