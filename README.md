@@ -33,6 +33,10 @@ Only clone or download the repo if you know what you do!
 
 ## Changelog
 
+### Version 0.3.1
+
+- Fix parameter for wind speed and time
+
 ### Version 0.3.0
 
 - First compatibility with V1.0 (exp)

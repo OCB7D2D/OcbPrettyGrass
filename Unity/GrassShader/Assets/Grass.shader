@@ -44,8 +44,7 @@ Shader "OCBNET/PrettyGrass"
         uniform sampler2D _Gloss_AO_SSS;
         uniform sampler2D _texcoord;
 
-        uniform float _Wind;
-        uniform float _WindTime;
+        uniform float4 _Wind;
 
         uniform float _FadeDistance = 55;
 
@@ -116,10 +115,10 @@ Shader "OCBNET/PrettyGrass"
             xlat0.x = v.vertex.y + v.vertex.x;
             xlat0.x = xlat0.x + v.vertex.z;
             xlat0.x = xlat0.x * 0.850000024;
-            xlat0.x = _WindTime * -12.4799995 + xlat0.x;
+            xlat0.x = _Wind.y * -12.4799995 + xlat0.x;
             xlat0.x = sin(xlat0.x);
             xlat0 = xlat0.xxxx + float4(0.5, 0.5, 1.0, 1.0);
-            xlat0 = xlat0 * float4(float4(_Wind, _Wind, _Wind, _Wind));
+            xlat0 = xlat0 * float4(float4(_Wind.x, _Wind.x, _Wind.x, _Wind.x));
             xlat1.xy = xlat0.yy * float2(0.200000003, 0.25) + v.vertex.xz;
             xlat1.xz = xlat0.ww * float2(0.3125, 0.3125) + xlat1.xy;
             xlat0.xy = xlat0.xy * float2(0.0500000007, 0.100000001) + v.vertex.xz;
