@@ -1,4 +1,4 @@
-# OCB Grass Shader Mod - 7 Days to Die Addon (V1.0 exp)
+# OCB Grass Shader Mod - 7 Days to Die (V1.0) Addon
 
 Replaces original Grass Shader (Game/SwayingGrass Surface) with
 a new one that supports real-time shading (e.g. point lights).
@@ -32,6 +32,10 @@ Otherwise please use one of the [official releases][5] here.
 Only clone or download the repo if you know what you do!
 
 ## Changelog
+
+### Version 0.3.2
+
+- Recompile for V1.0 stable (b333)
 
 ### Version 0.3.1
 
