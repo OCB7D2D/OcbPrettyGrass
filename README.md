@@ -33,6 +33,12 @@ Only clone or download the repo if you know what you do!
 
 ## Changelog
 
+### Version 0.4.0
+
+- Added Motion Vector Pass
+- For temporal anti-aliasing
+- Compiled for V1.2 stable (b27)
+
 ### Version 0.3.2
 
 - Recompile for V1.0 stable (b333)
