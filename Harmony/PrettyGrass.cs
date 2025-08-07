@@ -40,7 +40,7 @@ public class OcbPrettyGrass : IModApi
         ModEvents.GameStartDone.RegisterHandler(ApplyGamePrefs);
     }
 
-    static public void ApplyGamePrefs()
+    static public void ApplyGamePrefs(ref ModEvents.SGameStartDoneData _)
     {
         if (GameStats.GetInt(EnumGameStats.GameState) == 0)
         {
@@ -75,7 +75,8 @@ public class OcbPrettyGrass : IModApi
     {
         static void Postfix()
         {
-            ApplyGamePrefs();
+            var data = new ModEvents.SGameStartDoneData();
+            ApplyGamePrefs(ref data);
         }
     }
 

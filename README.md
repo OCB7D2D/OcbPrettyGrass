@@ -33,6 +33,10 @@ Only clone or download the repo if you know what you do!
 
 ## Changelog
 
+### Version 0.5.0
+
+- Update for 7D2D V2.1 stable
+
 ### Version 0.4.0
 
 - Added Motion Vector Pass
